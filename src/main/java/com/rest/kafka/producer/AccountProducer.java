@@ -35,10 +35,10 @@ public class AccountProducer {
 		try (FileReader reader = new FileReader("src/main/resources/account.json")) {
 			Object obj = jsonParser.parse(reader);
 
-			JSONArray employeeList = (JSONArray) obj;
-			System.out.println(employeeList);
+			JSONArray accountList = (JSONArray) obj;
+			System.out.println(accountList);
 
-			employeeList.forEach(acc -> parseAccountDetails((JSONObject) acc, accNumber));
+			accountList.forEach(acc -> parseAccountDetails((JSONObject) acc, accNumber));
 
 			if (null != acc.getAccountNo()) {
 				kafkaTemplate.send("accountTopic", acc);
@@ -57,16 +57,13 @@ public class AccountProducer {
     
     
     public Account parseAccountDetails(JSONObject account, String accNumber){
-    	JSONObject employeeObject = (JSONObject) account.get("Account");
+    	JSONObject accountObject = (JSONObject) account.get("Account");
         
-        String accountname = (String) employeeObject.get("accountname");    
-        System.out.println(accountname);
+        String accountname = (String) accountObject.get("accountname");    
          
-        String accountType = (String) employeeObject.get("accountType");  
-        System.out.println(accountType);
+        String accountType = (String) accountObject.get("accountType");  
          
-        String accountNumber = (String) employeeObject.get("accountNumber");    
-        System.out.println(accountNumber);
+        String accountNumber = (String) accountObject.get("accountNumber");    
         
         if (accNumber.equalsIgnoreCase(accountname)) {
         	acc.setAccountName(accountname);
