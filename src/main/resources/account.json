@@ -1,0 +1,16 @@
+[{"Account":{
+    "accountname": "John Doe",
+    "accountType": "Savings",
+    "accountNumber": "12929129219"
+}},
+{"Account":{
+    "accountname": "Robert Miller",
+    "accountType": "Current",
+    "accountNumber": "21121312313"
+}},
+{"Account":{
+    "accountname": "Michael Jones",
+    "accountType": "Savings",
+    "accountNumber": "213234444"
+}}
+]
